@@ -1,0 +1,14 @@
+<%= form_for([@recipe, @recipe.comments.build]) do |form| %>
+
+  <%= image_tag @recipe.image.url(:medium) %><br>
+ <h2>Add your comment</h2>
+
+  <div class="field">
+    <%= form.text_area :content %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

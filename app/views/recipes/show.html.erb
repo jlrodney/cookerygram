@@ -1,0 +1,11 @@
+<h1>Your recipe</h1>
+
+<div id="centered" class="white">
+  <%= @recipe.user_name %>
+  <%= image_tag(@recipe.image.url(:medium)) %>
+  <br>
+  <%= @recipe.description %>
+</div>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
