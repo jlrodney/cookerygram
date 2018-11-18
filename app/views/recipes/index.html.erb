@@ -1,27 +1,32 @@
 
 <h1> Everyone's beatiful recipes </h1>
-<ul class="photos-list">
+<ul class="recipes-list">
+  <br>
 <% if user_signed_in? %>
   <%= link_to 'New recipe', new_recipe_path %><br><br>
   <% @recipes.each do |recipe| %>
-  <div id='recipe_<%=recipe.id %>'>
-    <strong><%= recipe.user.user_name %></strong><br>
+  <div class="post-recipes" id='recipe_<%=recipe.id %>'>
+    <br>
+    <h2><%= recipe.user.user_name %></h2><br>
     <%= image_tag recipe.image.url(:medium) %><br>
     <%= recipe.description %><br>
     <%= recipe.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
     <% if recipe.user_id == current_user.id %>
     <%= link_to 'Edit Recipe', edit_recipe_path(recipe)%>
     <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
     <%end%>
+    <br>
 
     <%= link_to 'Add Comment', new_recipe_comment_path(recipe.id), method: :get %><br>
-
+    <br>
     <% recipe.comments.each do |comment| %>
     <div id="comment_<%=comment.id %>">
       <strong><%= comment.user.user_name %></strong>
       <%= comment.content %><br>
       <%= comment.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
     </div>
+    <br>
       <% end%>
     </div>
   <% end %>
